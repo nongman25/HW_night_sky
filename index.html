@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Moon Photos</title>
+    <title>Hyun Wook's night sky</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <style>
         body {
             font-family: 'MS Sans Serif', Arial, sans-serif;
@@ -22,79 +23,25 @@
             border: 2px solid #000;
             box-shadow: 1px 1px #fff inset, -1px -1px #000 inset;
         }
-        .title-bar .title {
-            margin: 0;
-        }
-        .title-bar .buttons {
-            display: flex;
-            align-items: center;
-        }
-        .title-bar .buttons button {
-            background-color: #C0C0C0;
-            border: 1px solid #000;
-            width: 16px;
-            height: 16px;
-            margin-left: 2px;
-            cursor: pointer;
-            box-shadow: 1px 1px #fff inset, -1px -1px #000 inset;
-        }
-        .gallery {
+        .menu {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 5px;
             padding: 10px;
-            max-width: 1200px;
-            margin: auto;
-            background-color: #C0C0C0;
-            border: 2px solid #808080;
-        }
-        .gallery-item {
-            border: 2px solid #808080;
-            background-color: #D3D3D3;
-            box-shadow: 1px 1px #fff inset, -1px -1px #000 inset;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-        }
-        .gallery-item p {
-            margin: 5px 0;
-            padding: 0 5px;
-            font-size: 12px;
-            color: #000;
-        }
-        .photo-page {
+            max-width: 600px;
+            margin: 50px auto;
             text-align: center;
-            padding: 10px;
-            display: none;
-            background-color: #D3D3D3;
-            border: 2px solid #808080;
-            box-shadow: 1px 1px #fff inset, -1px -1px #000 inset;
-            max-width: 80%;
-            margin: 20px auto;
         }
-        .photo-page img {
-            width: 80%;
-            height: auto;
-        }
-        .description {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #000;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 14px;
+        .menu-item {
+            font-size: 20px;
             text-decoration: none;
             color: #000;
-            cursor: pointer;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: 2px solid #808080;
             background-color: #D3D3D3;
             box-shadow: 1px 1px #fff inset, -1px -1px #000 inset;
+            cursor: pointer;
         }
-        .back-link:hover {
+        .menu-item:hover {
             background-color: #C0C0C0;
         }
     </style>
@@ -102,80 +49,18 @@
 <body>
 
 <div class="title-bar">
-    <span class="title">Daily Moon Photos</span>
-    <div class="buttons">
-        <button aria-label="Minimize">_</button>
-        <button aria-label="Maximize">☐</button>
-        <button aria-label="Close">X</button>
+    <span class="title">Hyun Wook's night sky</span>
+    <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
     </div>
 </div>
 
-<div class="gallery" id="gallery">
-    <!-- Gallery items will be inserted here by JavaScript -->
+<div class="menu">
+    <a href="moon.html" class="menu-item"><strong>Moon</strong></a>
+    <a href="deepsky.html" class="menu-item"><strong>Deep Sky</strong></a>
 </div>
-
-<div id="photoPage" class="photo-page">
-    <div class="title-bar">
-        <span id="photoTitle" class="title">Moon Photo</span>
-        <div class="buttons">
-            <button aria-label="Minimize">_</button>
-            <button aria-label="Maximize">☐</button>
-            <button aria-label="Close" onclick="showGallery()">X</button>
-        </div>
-    </div>
-    <img id="photoImage" src="" alt="Moon photo">
-    <div class="description" id="photoDescription">
-        <p>Description of the moon photo.</p>
-    </div>
-    <span class="back-link" onclick="showGallery()">Back to Gallery</span>
-</div>
-
-<script>
-    const photos = [
-        {
-            date: '2024-08-15',
-            thumb: 'photos/thumb_2024-08-15.jpg',
-            full: 'photos/2024-08-15.jpg',
-            description: 'Description of the moon photo taken on 2024-08-15.'
-        },
-        // Add more photo objects here
-    ];
-
-    const gallery = document.getElementById('gallery');
-    const photoPage = document.getElementById('photoPage');
-    const photoTitle = document.getElementById('photoTitle');
-    const photoImage = document.getElementById('photoImage');
-    const photoDescription = document.getElementById('photoDescription');
-
-    photos.forEach(photo => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.innerHTML = `
-            <a href="#" onclick="showPhoto('${photo.date}')">
-                <img src="${photo.thumb}" alt="Moon photo ${photo.date}">
-            </a>
-            <p>${photo.date}</p>
-        `;
-        gallery.appendChild(item);
-    });
-
-    function showPhoto(date) {
-        const photo = photos.find(p => p.date === date);
-        if (photo) {
-            photoTitle.textContent = `Moon Photo - ${photo.date}`;
-            photoImage.src = photo.full;
-            photoImage.alt = `Moon photo ${photo.date}`;
-            photoDescription.textContent = photo.description;
-            gallery.style.display = 'none';
-            photoPage.style.display = 'block';
-        }
-    }
-
-    function showGallery() {
-        gallery.style.display = 'grid';
-        photoPage.style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
