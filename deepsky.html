@@ -194,7 +194,9 @@
         },
         // Add more photo objects here
     ];
-
+    photos.forEach((photo, index) => {
+    photo.id = index + 1;
+    });
     const gallery = document.getElementById('gallery');
     const photoPage = document.getElementById('photoPage');
     const photoTitle = document.getElementById('photoTitle');
@@ -202,28 +204,27 @@
     const photoDescription = document.getElementById('photoDescription');
 
     photos.forEach(photo => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.innerHTML = `
-            <a href="#" onclick="showPhoto('${photo.date}')">
-                <img src="${photo.thumb}" alt="DeepSky photo ${photo.date}">
-            </a>
-            <p>${photo.date}</p>
-        `;
-        gallery.appendChild(item);
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.innerHTML = `
+        <a href="#" onclick="showPhoto(${photo.id})">
+            <img src="${photo.thumb}" alt="DeepSky photo ${photo.date}">
+        </a>
+        <p>${photo.date}</p>
+    `;
+    gallery.appendChild(item);
     });
-
-    function showPhoto(date) {
-        const photo = photos.find(p => p.date === date);
-        if (photo) {
-            photoTitle.textContent = `DeepSky Photo - ${photo.date}`;
-            photoImage.src = photo.full;
-            photoImage.alt = `DeepSky photo ${photo.date}`;
-            photoDescription.innerHTML = photo.description.replace(/\n/g, '<br>');
-            gallery.style.display = 'none';
-            photoPage.style.display = 'block';
-        }
+    function showPhoto(id) {
+    const photo = photos.find(p => p.id === id);
+    if (photo) {
+        photoTitle.textContent = `DeepSky Photo - ${photo.date}`;
+        photoImage.src = photo.full;
+        photoImage.alt = `DeepSky photo ${photo.date}`;
+        photoDescription.innerHTML = photo.description.replace(/\n/g, '<br>');
+        gallery.style.display = 'none';
+        photoPage.style.display = 'block';
     }
+}
 
     function showGallery() {
         gallery.style.display = 'grid';
