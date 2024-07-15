@@ -82,6 +82,8 @@
             margin-top: 10px;
             font-size: 14px;
             color: #000;
+            text-align: left; 
+            margin-left: 400px;
         }
         .back-link {
             display: inline-block;
@@ -141,7 +143,20 @@
             date: '2024-07-14',
             thumb: 'photos/moon/2024-07-14_moon.jpg',
             full: 'photos/moon/2024-07-14_moon.jpg',
-            description: '촬영장소: 서울 송파구, 경통 : seestar s50, 총노출 160초. 10초씩 스택. 은하찍으려다, 구름이 많아서, 구상성단으로 변경. 달 3분 노출로 찍고나서 노린 천제.'
+            description: `촬영장소: 서울 송파구,<br> 
+            경통: seestar s50, <br>
+            총노출 179초. 이후 스택. <br>
+            장마기간인데 상당히 맑은 하늘.`
+        },
+        {
+            date: '2024-07-15',
+            thumb: 'photos/moon/2024-07-15_moon.jpg',
+            full: 'photos/moon/2024-07-15_moon.jpg',
+            description: `촬영장소: 서울 송파구<br>
+            촬영시각: 22:30<br>
+            경통: seestar s50<br>
+            총노출 10초. 이후 스택.<br>
+            구름이 많아서 영 마음에 들지않게 스택되었다. 구름사이로 달이 나올 때마다 잠깐씩 찍어보려 했지만, 구름이 몰려와서 철수함.`
         },
         // Add more photo objects here
     ];
@@ -170,7 +185,7 @@
             photoTitle.textContent = `Moon Photo - ${photo.date}`;
             photoImage.src = photo.full;
             photoImage.alt = `Moon photo ${photo.date}`;
-            photoDescription.textContent = photo.description;
+            photoDescription.innerHTML = photo.description.replace(/\n/g, '<br>');
             gallery.style.display = 'none';
             photoPage.style.display = 'block';
         }
