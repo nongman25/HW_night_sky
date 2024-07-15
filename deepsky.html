@@ -117,16 +117,16 @@
 
 <div id="photoPage" class="photo-page">
     <div class="title-bar">
-        <span id="photoTitle" class="title">Moon Photo</span>
+        <span id="photoTitle" class="title">DeepSky Photo</span>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
             <button aria-label="Close" onclick="showGallery()"></button>
         </div>
     </div>
-    <img id="photoImage" src="" alt="Moon photo">
+    <img id="photoImage" src="" alt="DeepSky photo">
     <div class="description" id="photoDescription">
-        <p>Description of the moon photo.</p>
+        <p>Description of the DeepSky photo.</p>
     </div>
     <span class="back-link" onclick="showGallery()">Back to Gallery</span>
 </div>
@@ -156,7 +156,7 @@
         item.className = 'gallery-item';
         item.innerHTML = `
             <a href="#" onclick="showPhoto('${photo.date}')">
-                <img src="${photo.thumb}" alt="Moon photo ${photo.date}">
+                <img src="${photo.thumb}" alt="DeepSky photo ${photo.date}">
             </a>
             <p>${photo.date}</p>
         `;
@@ -166,9 +166,9 @@
     function showPhoto(date) {
         const photo = photos.find(p => p.date === date);
         if (photo) {
-            photoTitle.textContent = `Moon Photo - ${photo.date}`;
+            photoTitle.textContent = `DeepSky Photo - ${photo.date}`;
             photoImage.src = photo.full;
-            photoImage.alt = `Moon photo ${photo.date}`;
+            photoImage.alt = `DeepSky photo ${photo.date}`;
             photoDescription.textContent = photo.description;
             gallery.style.display = 'none';
             photoPage.style.display = 'block';
